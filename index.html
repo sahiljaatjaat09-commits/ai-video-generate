@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#090914">
+  <meta name="description" content="AI Video Generate - create stories, scripts and video prompts.">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <title>AI Video Generate</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="AI Video Generate home">
+        <span class="brand-mark">✦</span><span>AI Video <b>Generate</b></span>
+      </a>
+      <button class="avatar" id="profileBtn" aria-label="Profile">S</button>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="eyebrow"><span class="pulse"></span> YOUR CREATIVE AI STUDIO</div>
+        <h1>Create something<br><span>extraordinary.</span></h1>
+        <p>Turn your ideas into stories, scripts and video prompts.</p>
+        <div class="credit-pill"><span>✦</span> Demo workspace <small>· Free starter</small></div>
+      </section>
+
+      <section class="section">
+        <div class="section-heading"><div><h2>Explore AI tools</h2><p>Choose what you want to create</p></div></div>
+        <div class="tool-grid">
+          <button class="tool-card featured" data-tool="video"><span class="tool-icon">▶</span><strong>Text to Video</strong><small>Build a video prompt</small><span class="card-arrow">↗</span></button>
+          <button class="tool-card" data-tool="image"><span class="tool-icon blue">▧</span><strong>Image to Video</strong><small>Plan photo animation</small><span class="card-arrow">↗</span></button>
+          <button class="tool-card" data-tool="story"><span class="tool-icon pink">✎</span><strong>AI Story Writer</strong><small>Create a story draft</small><span class="card-arrow">↗</span></button>
+          <button class="tool-card" data-tool="script"><span class="tool-icon cyan">▤</span><strong>AI Script Writer</strong><small>Write video narration</small><span class="card-arrow">↗</span></button>
+          <button class="tool-card" data-tool="voice"><span class="tool-icon orange">♫</span><strong>AI Voiceover</strong><small>Prepare voice text</small><span class="card-arrow">↗</span></button>
+          <button class="tool-card" data-tool="imagegen"><span class="tool-icon violet">✧</span><strong>AI Image Prompt</strong><small>Describe an image</small><span class="card-arrow">↗</span></button>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-heading"><div><h2>My creations</h2><p>Your saved drafts on this device</p></div><button class="text-btn" id="viewAll">View all</button></div>
+        <div id="recentList" class="recent-list"><div class="empty-state"><span>✧</span><b>No creations yet</b><small>Your saved drafts will appear here.</small></div></div>
+      </section>
+
+      <section class="notice">
+        <span>ⓘ</span><p><b>Starter version</b><br>AI generation is not connected yet. This version lets you create and save drafts locally. Live video, image and voice generation will need a connected AI service.</p>
+      </section>
+    </main>
+
+    <nav class="bottom-nav">
+      <button class="nav-item active" data-page="home"><span>⌂</span>Home</button>
+      <button class="nav-item" data-page="create"><span>✦</span>Create</button>
+      <button class="nav-item" data-page="library"><span>▣</span>Library</button>
+      <button class="nav-item" data-page="profile"><span>◉</span>Profile</button>
+    </nav>
+  </div>
+
+  <div class="modal-backdrop" id="toolModal" hidden>
+    <section class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modal-head"><div><div class="eyebrow">CREATION STUDIO</div><h2 id="modalTitle">Text to Video</h2></div><button class="close-btn" id="closeModal" aria-label="Close">×</button></div>
+      <label for="promptInput" id="promptLabel">Describe your video idea</label>
+      <textarea id="promptInput" rows="5" placeholder="Example: A magical forest at sunrise, cinematic camera movement..."></textarea>
+      <div class="field-row">
+        <div class="field"><label for="language">Language</label><select id="language"><option>Hindi</option><option>English</option><option>Hindi + English</option></select></div>
+        <div class="field"><label for="format">Aspect ratio</label><select id="format"><option>16:9 YouTube</option><option>9:16 Shorts / Reels</option><option>1:1 Square</option></select></div>
+      </div>
+      <div class="modal-actions"><button class="secondary-btn" id="sampleBtn">Use sample</button><button class="primary-btn" id="makeBtn">Create draft <span>✦</span></button></div>
+      <p class="helper" id="modalHelper">This creates a saved draft on your device, not a rendered video.</p>
+      <div id="resultBox" class="result-box" hidden></div>
+    </section>
+  </div>
+  <div class="toast" id="toast" role="status"></div>
+  <script src="app.js"></script>
+</body>
+</html>
